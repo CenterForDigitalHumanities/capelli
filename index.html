@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <img id="abbrevImg" alt="abbreviation page" src="images/cappelli/Scan0064.jpg" style="height: 100%; width: auto;">
+    <img id="abbrevImg" alt="abbreviation page" src="images/Scan0064.jpg" style="height: 100%; width: auto;">
     <div id="abbreviations">
         <select id="abbrevGroups">
                         <option selected="">Select One</option>
@@ -530,7 +530,7 @@
             var capelli = {};
             capelli.abbrevLabelsAll = $("#abbrevLabels").clone();
             $("#abbrevLabels").change(function () {
-                $("#abbrevImg").attr("src", "images/cappelli/" + $(this).val());
+                $("#abbrevImg").attr("src", "images/" + $(this).val());
             });
             $("#abbrevGroups").change(function () {
                 $("#abbrevSplit").addClass("ui-state-disabled");
