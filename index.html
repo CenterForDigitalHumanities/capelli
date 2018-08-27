@@ -8,9 +8,6 @@
             padding:0;
             margin:0;
         }
-        #abbrevSplit {
-            width: 30%;
-        }
 
         #abbrevImg {
             position: absolute;
@@ -532,25 +529,29 @@
             <img alt="@CenterForDigitalHumanities" class="avatar" height="48" src="https://avatars3.githubusercontent.com/u/13770519?v=4&amp;s=96" width="48">
         </a>
     </small>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
     <script>
-        $(function () {
-            var capelli = {};
-            capelli.abbrevLabelsAll = $("#abbrevLabels").clone();
-            $("#abbrevLabels").change(function () {
-                $("#abbrevImg").attr("src", "images/" + $(this).val());
+        (function(){
+
+            const abbrevImg = document.getElementById("abbrevImg");
+            const groupsSelect = document.getElementById("abbrevGroups");
+            const labelsSelect = document.getElementById("abbrevLabels");
+            const labelsCollection = labelsSelect.getElementsByTagName("option");
+
+            groupsSelect.addEventListener("input",function(event){
+                let group = event.target.value;
+                labelsSelect.removeAttribute("disabled");
+                labelsSelect.removeAttribute("selected");
+                [...labelsCollection].forEach(elem => elem.style.display = elem.classList.contains("group-"+group) ? "block" : "none" );
+                document.querySelector(".group-" + group).setAttribute("selected",true);
+                labelsSelect.dispatchEvent(new Event("input"));
             });
-            $("#abbrevGroups").change(function () {
-                $("#abbrevSplit").addClass("ui-state-disabled");
-                $("#abbrevLabels option").remove();
-                capelli.abbrevLabelsAll.children(".group-" + $("#abbrevGroups option:selected").val()).clone(
-                    true).appendTo("#abbrevLabels");
-                $("#abbrevLabels").removeAttr("disabled");
-                $("#abbrevSplit").removeClass("ui-state-disabled");
-                $("#abbrevLabels option:first").attr("selected", true);
-                $("#abbrevLabels").change();
+
+            labelsSelect.addEventListener("input",function(event){
+                abbrevImg.src = "images/" + event.target.value;
+                console.log = abbrevImg.src;
             });
-        });
+
+        })()
     </script>
 </body>
 
