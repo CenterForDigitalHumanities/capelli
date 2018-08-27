@@ -10,7 +10,4 @@ To use this in an `<iframe>` set your source to https://centerfordigitalhumaniti
 <iframe src="https://centerfordigitalhumanities.github.io/capelli/index.mini.html"></iframe>
 ````
 
-<video>
-  <source src="images/gif.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+<img src="images/gif.gif">
