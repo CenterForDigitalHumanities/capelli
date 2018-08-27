@@ -9,7 +9,7 @@
             margin:0;
         }
 
-        #abbrevImg {
+        #abbrevImg, #swapImg {
             position: absolute;
             right: 0;
             left: 0;
@@ -20,13 +20,20 @@
             max-height: 100%;
         }
 
+        #swapImg {
+            opacity: 0;
+            /* set to 0 to remove crossfade */
+            transition: opacity 250ms;
+            z-index: 1;
+        }
+
         #abbreviations {
             position: relative;
             top: 0;
             left: 0;
             margin: 5px 30px;
             overflow: visible;
-            z-index: 15;
+            z-index: 4;
             display: inline-block;
             max-width: 200px;
             width: 100%;
@@ -43,6 +50,7 @@
 
 <body>
     <img id="abbrevImg" alt="abbreviation page" src="images/Scan0064.jpg">
+    <img id="swapImg">
     <div id="abbreviations">
         <select id="abbrevGroups">
                         <option selected="">Select One</option>
@@ -546,10 +554,19 @@
                 labelsSelect.dispatchEvent(new Event("input"));
             });
 
+            const crossFade = 250; // in ms from CSS
+
             labelsSelect.addEventListener("input",function(event){
-                abbrevImg.src = "images/" + event.target.value;
-                console.log = abbrevImg.src;
+                swapImg.src = "images/" + event.target.value;
             });
+
+            swapImg.onload = function(event){
+                swapImg.style.opacity = 1;
+                setTimeout(function(){
+                    abbrevImg.src = swapImg.src;
+                    swapImg.style.opacity = 0;
+                },crossFade)
+            }
 
         })()
     </script>
