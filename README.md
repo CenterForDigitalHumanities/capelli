@@ -9,4 +9,5 @@ To use this in an `<iframe>` set your source to https://centerfordigitalhumaniti
 ````html
 <iframe src="https://centerfordigitalhumanities.github.io/capelli/index.mini.html"></iframe>
 ````
-<iframe src="https://centerfordigitalhumanities.github.io/capelli/index.mini.html"></iframe>
+<iframe src="https://centerfordigitalhumanities.github.io/capelli/index.mini.html">
+</iframe>
