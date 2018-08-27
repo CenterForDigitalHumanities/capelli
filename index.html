@@ -530,9 +530,8 @@
             abbrevGroups.addEventListener("input", function (event) {
                 let group = event.target.value;
                 abbrevLabels.removeAttribute("disabled");
-                abbrevLabels.removeAttribute("selected");
-                [...abbrevLabels.getElementsByTagName("option")].forEach(elem => elem.style.display = elem.classList.contains("group-" +
-                    group) ? "block" : "none");
+                [...abbrevLabels.getElementsByTagName("option")].forEach(elem => {elem.style.display = elem.classList.contains("group-" +
+                    group) ? "block" : "none"; elem.removeAttribute("selected");});
                 document.querySelector(".group-" + group).setAttribute("selected", true);
                 abbrevLabels.dispatchEvent(new Event("input"));
             });
